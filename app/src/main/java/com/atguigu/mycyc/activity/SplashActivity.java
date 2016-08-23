@@ -1,6 +1,7 @@
 package com.atguigu.mycyc.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.atguigu.mycyc.R;
+import com.atguigu.mycyc.utils.CacheUtils;
+import com.atguigu.mycyc.utils.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,10 @@ public class SplashActivity extends Activity {
     ImageView ivSplashStart;
     private List<ImageView> imgs;
 
+    /**
+     * 是否已经启动主页面
+     */
+    private boolean isStartMain = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,10 @@ public class SplashActivity extends Activity {
     }
 
     private void initData() {
+        isStartMain= CacheUtils.getBoolean(this, Constant.IS_START_MAIN);
+        if(isStartMain) {//跳转到欢迎界面
+            jumpToWelcome();
+        }
         //照片资源id数组
         int[] array = {R.drawable.welcome1, R.drawable.welcome2, R.drawable.welcome3};
         //图像集合
@@ -52,8 +63,20 @@ public class SplashActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(SplashActivity.this, "点击跳转了", Toast.LENGTH_SHORT).show();
+
+
+                jumpToWelcome();
+
+
             }
         });
+    }
+
+    private void jumpToWelcome() {
+        Intent intent=new Intent(SplashActivity.this,WelcomeActivity.class);
+        startActivity(intent);
+        //关闭当前界面
+        finish();
     }
 
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
