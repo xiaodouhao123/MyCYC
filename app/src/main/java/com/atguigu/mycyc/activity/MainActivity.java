@@ -1,11 +1,12 @@
-package com.atguigu.mycyc;
+package com.atguigu.mycyc.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
+
+import com.atguigu.mycyc.R;
 
 public class MainActivity extends Activity {
- private TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
