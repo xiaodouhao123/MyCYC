@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WelcomeActivity" android:launchMode="singleTop"></activity>
+        <activity android:name=".activity.WelcomeActivity" android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
