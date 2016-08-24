@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -57,6 +60,20 @@ public class MainActivity extends FragmentActivity {
         initFragment();
         //初始化监听
         initListener();
+        //初始化动画,根据吱吱被选中的转态来设置动画
+        initAnimation();
+
+
+    }
+
+    private void initAnimation() {
+        boolean checked = rbSqueakMain.isChecked();
+        if(checked) {//吱吱选项卡被选中
+
+            AlphaAnimation aam=new AlphaAnimation(0,1);
+            ScaleAnimation sam=new ScaleAnimation(0,1,0,1, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+//            AnimationSet set =new AnimationSet()
+        }
     }
 
     private void initListener() {

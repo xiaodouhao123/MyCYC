@@ -32,7 +32,6 @@
             style="@style/bottom_radiogroup" />
         <RadioButton
             android:id="@+id/rb_squeak_main"
-
             android:text="吱吱"
             style="@style/bottom_radiogroup" />
         <RadioButton
