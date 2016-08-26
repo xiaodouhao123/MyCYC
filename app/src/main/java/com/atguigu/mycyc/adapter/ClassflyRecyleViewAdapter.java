@@ -26,9 +26,16 @@ import butterknife.ButterKnife;
 public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HOT_PRODUCT = 0;
     private static final int CHILD = 1;
-    private final Context mContext;
+
+    public void setResultBean(ClassfilyBean.ResultBean resultBean) {
+        this.resultBean = resultBean;
+//        notifyItemChanged(0);
+//        notifyDataSetChanged();
+    }
+
+    private  Context mContext;
     //需要显示的数据对象
-    private final ClassfilyBean.ResultBean resultBean;
+    private  ClassfilyBean.ResultBean resultBean;
 
     //热卖推荐的商品列表
     private List<ClassfilyBean.ResultBean.HotProductListBean> hot_product_list;
@@ -95,6 +102,7 @@ public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView
      * @param holder
      */
     private void setHotProducutData(RecyclerView.ViewHolder holder) {
+        ((ViewHolder0) holder).llHotRecommend.removeAllViews();
         for (int i = 0; i < hot_product_list.size(); i++) {
             View view = View.inflate(mContext, R.layout.classfily_hot_recommend_item, null);
             ImageView iv = (ImageView) view.findViewById(R.id.card_img0);
