@@ -471,7 +471,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             //让当前价格的字体更清晰些
             tv_price.getPaint().setFlags(Paint.ANTI_ALIAS_FLAG);
             //设置原始价格
-            tv_orign_price.setText(seckill_info.getList().get(0).getOrigin_price());
+            tv_orign_price.setText(seckill_info.getList().get(i).getOrigin_price());
             //设置原始价格的下划线
             tv_orign_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             //把item加入到linearlayout中
