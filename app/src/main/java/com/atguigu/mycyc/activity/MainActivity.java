@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.atguigu.mycyc.R;
 import com.atguigu.mycyc.base.BaseFragment;
@@ -40,6 +44,10 @@ public class MainActivity extends FragmentActivity {
     RadioButton rbSelfcenterMain;
     @Bind(R.id.rg_main)
     RadioGroup rgMain;
+    @Bind(R.id.iv_menu_squeak_pressed)
+    ImageView ivMenuSqueakPressed;
+    @Bind(R.id.rel_squeak_bg_pressed)
+    RelativeLayout relSqueakBgPressed;
     /**
      * 选中的Fragment的对应的位置
      */
@@ -60,19 +68,51 @@ public class MainActivity extends FragmentActivity {
         initFragment();
         //初始化监听
         initListener();
-        //初始化动画,根据吱吱被选中的转态来设置动画
-        initAnimation();
+
 
 
     }
 
     private void initAnimation() {
         boolean checked = rbSqueakMain.isChecked();
-        if(checked) {//吱吱选项卡被选中
+        if (checked) {//吱吱选项卡被选中
 
-            AlphaAnimation aam=new AlphaAnimation(0,1);
-            ScaleAnimation sam=new ScaleAnimation(0,1,0,1, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-//            AnimationSet set =new AnimationSet()
+            AlphaAnimation aam = new AlphaAnimation(0, 1);
+            ScaleAnimation sam = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            AnimationSet set = new AnimationSet(this, null);
+            set.addAnimation(aam);
+            set.addAnimation(sam);
+            set.setDuration(300);
+            set.setFillAfter(true);
+            ivMenuSqueakPressed.startAnimation(set);
+            relSqueakBgPressed.setVisibility(View.VISIBLE);
+        } else {
+            AlphaAnimation aam = new AlphaAnimation(1, 0);
+            ScaleAnimation sam = new ScaleAnimation(1, 0, 1, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            AnimationSet set = new AnimationSet(this, null);
+            set.addAnimation(aam);
+            set.addAnimation(sam);
+            set.setDuration(300);
+            set.setFillAfter(true);
+            ivMenuSqueakPressed.startAnimation(set);
+            //设置动画的监听
+            set.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    relSqueakBgPressed.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
         }
     }
 
@@ -90,6 +130,7 @@ public class MainActivity extends FragmentActivity {
                         break;
                     case R.id.rb_squeak_main://吱吱页面
                         position = 2;
+
                         break;
                     case R.id.rb_shoppingcart_main://购物车
                         position = 3;
@@ -102,40 +143,42 @@ public class MainActivity extends FragmentActivity {
                 BaseFragment to = getFragment();
                 //替换
                 switchFrament(mContent, to);
+                //初始化动画,根据吱吱被选中的转态来设置动画
+                initAnimation();
             }
         });
         //设置默认选中主页面
         rgMain.check(R.id.rb_home_main);
     }
+
     /**
-     *
      * @param from 刚显示的Fragment,马上就要被隐藏了
-     * @param to 马上要切换到的Fragment，一会要显示
+     * @param to   马上要切换到的Fragment，一会要显示
      */
     private void switchFrament(Fragment from, BaseFragment to) {
-        if(from != to){
+        if (from != to) {
             mContent = to;
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             //才切换
             //判断有没有被添加
-            if(!to.isAdded()){
+            if (!to.isAdded()) {
                 //to没有被添加
                 //from隐藏
-                if(from != null){
+                if (from != null) {
                     ft.hide(from);
                 }
                 //添加to
-                if(to != null){
-                    ft.add(R.id.fl_main_replaced,to).commit();
+                if (to != null) {
+                    ft.add(R.id.fl_main_replaced, to).commit();
                 }
-            }else{
+            } else {
                 //to已经被添加
                 // from隐藏
-                if(from != null){
+                if (from != null) {
                     ft.hide(from);
                 }
                 //显示to
-                if(to != null){
+                if (to != null) {
                     ft.show(to).commit();
                 }
             }
@@ -145,6 +188,7 @@ public class MainActivity extends FragmentActivity {
 
     /**
      * 根据位置的得到对应的Fragment
+     *
      * @return
      */
     private BaseFragment getFragment() {

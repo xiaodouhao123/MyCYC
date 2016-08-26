@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical">
-<TextView
-    android:text="我是分类界面"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/new_top_bar_height"
+        android:background="@drawable/header_bg">
+
+        <LinearLayout
+            android:id="@+id/ll_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_common_m"
+            android:layout_centerInParent="true"
+            android:background="@drawable/tag_label_bg"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_tab_category"
+                android:layout_width="@dimen/width_common_l"
+                android:layout_height="@dimen/height_common_m"
+                android:background="@drawable/tag_label_bg_left"
+                android:gravity="center"
+                android:text="@string/tab_category"
+                android:textColor="@color/tv_color_white"
+                android:textSize="@dimen/common_tv_size_l" />
+
+            <TextView
+                android:id="@+id/tv_tab_label"
+                android:layout_width="@dimen/width_common_l"
+                android:layout_height="@dimen/height_common_m"
+                android:gravity="center"
+                android:text="@string/tab_label"
+                android:textColor="@color/tv_color_red"
+                android:textSize="@dimen/common_tv_size_l" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/width_common_m"
+            android:layout_height="@dimen/height_common_l"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/icon_search_white" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 </LinearLayout>

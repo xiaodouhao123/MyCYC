@@ -5,21 +5,15 @@ import com.atguigu.mycyc.base.BaseFragment;
 
 /**
  * Created by 徐达
- * on 2016/8/23 on 19:46.
+ * on 2016/8/26 on 11:29.
  * 作用:
  */
-public class SqueakFragment extends BaseFragment {
-
-
+public class TableFragment extends BaseFragment {
     @Override
     protected void initData(String content) {
 
     }
 
-    /**
-     * 提供网络地址
-     * @return
-     */
     @Override
     protected String getUrl() {
         return null;
@@ -27,8 +21,6 @@ public class SqueakFragment extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_squeak;
+        return R.layout.fragment_table;
     }
-
-
 }

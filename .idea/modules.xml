@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MaterialRefreshLayout-library/MaterialRefreshLayout-library.iml" filepath="$PROJECT_DIR$/MaterialRefreshLayout-library/MaterialRefreshLayout-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyCYC.iml" filepath="$PROJECT_DIR$/MyCYC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator-library/ViewPagerIndicator-library.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator-library/ViewPagerIndicator-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
     <RadioGroup
         android:orientation="horizontal"
         android:id="@+id/rg_main"
@@ -33,6 +36,7 @@
         <RadioButton
             android:id="@+id/rb_squeak_main"
             android:text="吱吱"
+            android:drawableTop="@drawable/selector_rb_squeak"
             style="@style/bottom_radiogroup" />
         <RadioButton
             android:id="@+id/rb_shoppingcart_main"
@@ -46,5 +50,22 @@
             style="@style/bottom_radiogroup" />
 
     </RadioGroup>
+        <RelativeLayout
+            android:layout_alignBottom="@id/rg_main"
+            android:id="@+id/rel_squeak_bg_pressed"
+            android:layout_width="56.0dip"
+            android:layout_height="56.0dip"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/community_btn_oval_red_bg"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_menu_squeak_pressed"
+                android:layout_width="33.0dip"
+                android:layout_height="33.0dip"
+                android:layout_centerInParent="true"
+                android:src="@drawable/main_community_press" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

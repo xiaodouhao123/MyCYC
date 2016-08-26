@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/iv_recyview_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:src="@drawable/welcome2" />
+
+    <TextView
+        android:id="@+id/tv_recyview_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="哈哈呼呼喝喝好玩好玩好吃好吃好哦哦婆婆快点快点快点快点快点快点啦"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recyview_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:text="34.00"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="12sp" />
+</LinearLayout>

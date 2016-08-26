@@ -11,6 +11,19 @@ import com.atguigu.mycyc.base.BaseFragment;
 public class SelfCenterFragment extends BaseFragment {
 
 
+    @Override
+    protected void initData(String content) {
+
+    }
+
+    /**
+     * 提供网络地址
+     * @return
+     */
+    @Override
+    protected String getUrl() {
+        return null;
+    }
 
     @Override
     public int getLayoutId() {

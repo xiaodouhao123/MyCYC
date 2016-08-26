@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/black_deep_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_m_l"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_label"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/common_space"
+            android:drawableLeft="@drawable/home_arrow_left_flash"
+            android:drawablePadding="@dimen/common_space"
+            android:gravity="center"
+            android:text="今日闪购"
+            android:textColor="@color/black_dark_tv"
+            android:textSize="14.0dip" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8.0dip"
+            android:layout_toRightOf="@id/tv_label"
+            android:gravity="center"
+            android:text="距·结束"
+            android:textColor="@color/black_dark_tv"
+            android:textSize="14.0dip"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8.0dip"
+            android:layout_toRightOf="@id/tv_time"
+            android:background="@drawable/new_btn_red_background"
+            android:gravity="center"
+            android:paddingBottom="2.0dip"
+            android:paddingLeft="4.0dip"
+            android:paddingRight="4.0dip"
+            android:paddingTop="2.0dip"
+            android:text="标签"
+            android:textColor="@color/white"
+            android:textSize="14.0dip"
+            android:visibility="visible" />
+
+        <TextView
+            android:text="查看更多"
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_space"
+            android:drawablePadding="@dimen/common_space"
+            android:drawableRight="@drawable/home_arrow_right"
+            android:gravity="center"
+            android:textColor="@color/gray_dark_tv"
+            android:textSize="14.0dip" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/home_seckill_view_item" />
+
+</LinearLayout>
