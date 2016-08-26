@@ -36,5 +36,14 @@
         <item name="android:textSize">@dimen/home_tv_s_size</item>
         <item name="android:textColor">@color/tv_color_gray</item>
     </style>
-
+    <style name="mProgressBar">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:maxWidth">60.0dip</item>
+        <item name="android:maxHeight">60.0dip</item>
+        <item name="android:indeterminate">false</item>
+        <item name="android:indeterminateDrawable">@drawable/cyc_progress_anim</item>
+        <item name="android:indeterminateDuration">600</item>
+        <item name="android:minWidth">60.0dip</item>
+        <item name="android:minHeight">60.0dip</item>
+    </style>
 </resources>

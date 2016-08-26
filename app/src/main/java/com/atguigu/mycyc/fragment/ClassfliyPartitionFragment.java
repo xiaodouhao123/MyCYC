@@ -1,7 +1,7 @@
 package com.atguigu.mycyc.fragment;
 
 import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
@@ -66,20 +66,20 @@ public class ClassfliyPartitionFragment extends BaseFragment {
             resultBean = result.get(0);
             recyleviewAdapter = new ClassflyRecyleViewAdapter(mContext, resultBean);
             rlvClassfiyPartion.setAdapter(recyleviewAdapter);
-            rlvClassfiyPartion.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-//            GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false);
-//            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//                @Override
-//                public int getSpanSize(int position) {
-//                    if (position < 5) {
-//                        return 2;
-//                    } else {
-//
-//                        return 1;
-//                    }
-//                }
-//            });
-//            rlvHome.setLayoutManager(gridLayoutManager);*/
+           // rlvClassfiyPartion.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3, GridLayoutManager.VERTICAL, false);
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+               @Override
+                public int getSpanSize(int position) {
+                    if (position < 1) {
+                        return 3;
+                   } else {
+
+                       return 1;
+                    }
+                }
+            });
+            rlvClassfiyPartion.setLayoutManager(gridLayoutManager);
            //初始化监听
            initListenr();
 

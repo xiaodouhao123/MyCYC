@@ -29,8 +29,11 @@ public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView
     private final Context mContext;
     //需要显示的数据对象
     private final ClassfilyBean.ResultBean resultBean;
+
     //热卖推荐的商品列表
     private List<ClassfilyBean.ResultBean.HotProductListBean> hot_product_list;
+    //常用分类展示的数据
+    private List<ClassfilyBean.ResultBean.ChildBean> child;
 
     public ClassflyRecyleViewAdapter(Context mContext, ClassfilyBean.ResultBean resultBean) {
         this.mContext = mContext;
@@ -71,8 +74,16 @@ public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView
             //设置图片和文字
             setHotProducutData(holder);
 
-        }else {//常用分类
-
+        } else {//常用分类
+            //获取集合数据
+            child = resultBean.getChild();
+            //设置图片
+            Glide.with(mContext)
+                    .load(child.get(position-1).getPic())
+                            // .placeholder(R.drawable.new_img_loading_1)
+                    .into(((ViewHolder1) holder).cardImg0);
+            //设置当前价格
+            ((ViewHolder1) holder).tvPrice0.setText( child.get(position-1).getName());
         }
 
 
@@ -80,6 +91,7 @@ public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView
 
     /**
      * 设置热卖推荐的商品
+     *
      * @param holder
      */
     private void setHotProducutData(RecyclerView.ViewHolder holder) {
@@ -115,12 +127,13 @@ public class ClassflyRecyleViewAdapter extends RecyclerView.Adapter<RecyclerView
             ButterKnife.bind(this, view);
         }
     }
+
     static public class ViewHolder1 extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.tv)
-        TextView tv;
-
-
+        @Bind(R.id.card_img0)
+        ImageView cardImg0;
+        @Bind(R.id.tv_price0)
+        TextView tvPrice0;
         public ViewHolder1(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
