@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_new_common_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/new_top_bar_height"
+    android:background="@color/red_theme">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="标题"
+        android:textColor="@color/tv_color_white"
+        android:textSize="18.0sp" />
+
+    <ImageView
+        android:id="@+id/btn_ok"
+        android:layout_width="@dimen/back_btn_width"
+        android:layout_height="@dimen/back_btn_height"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:onClick="save"
+        android:scaleType="center"
+        android:src="@drawable/new_user_setting"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_btn_right"
+        android:layout_width="@dimen/back_btn_width"
+        android:layout_height="@dimen/back_btn_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:onClick="save"
+        android:scaleType="center"
+        android:src="@drawable/new_message_icon"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_msg_num"
+        android:layout_width="10.0dip"
+        android:layout_height="10.0dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/common_space_m"
+        android:layout_marginTop="14.0dip"
+        android:background="@drawable/circle_red_msg_num_bg"
+        android:clickable="false"
+        android:gravity="center"
+        android:singleLine="true"
+        android:visibility="invisible" />
+</RelativeLayout>

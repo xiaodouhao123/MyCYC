@@ -45,6 +45,8 @@ public class ClassfliyPartitionFragment extends BaseFragment {
     //recyle需要显示的数据
     private ClassfilyBean.ResultBean resultBean;
     private ClassflyRecyleViewAdapter recyleviewAdapter;
+    //路径集合
+   private String[] urls={AppNetConfig.CLASSFILY_LYQ,AppNetConfig.CLASSFILY_LYQ,AppNetConfig.CLASSFILY_XZ,AppNetConfig.CLASSFILY_XZ,AppNetConfig.CLASSFILY_PJ,AppNetConfig.CLASSFILY_PJ,AppNetConfig.CLASSFILY_COSPLAY,AppNetConfig.CLASSFILY_JJZP,AppNetConfig.CLASSFILY_JJZP,AppNetConfig.CLASSFILY_SMZB,AppNetConfig.CLASSFILY_YXZQ};
 
     @Override
     protected void initData(String content) {
@@ -113,8 +115,8 @@ public class ClassfliyPartitionFragment extends BaseFragment {
 
     private void getDataFromNet(int clickPosition) {
         //获取请求路径
-       // String url = getPositionUrl(clickPosition);
-        String url = AppNetConfig.CLASSFILY_YXZQ;
+        String url = getPositionUrl(clickPosition);
+        //String url = AppNetConfig.CLASSFILY_YXZQ;
         OkHttpUtils
                 .get()
                 .url(url)
@@ -162,7 +164,7 @@ public class ClassfliyPartitionFragment extends BaseFragment {
      * @return
      */
     private String getPositionUrl(int clickPosition) {
-        return null;
+        return urls[clickPosition];
     }
 
     @Override
