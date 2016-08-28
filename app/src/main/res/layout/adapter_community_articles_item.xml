@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_marginBottom="5dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/article_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:gravity="center"
+            android:id="@+id/author_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44.0dip">
+
+            <TextView
+                android:id="@+id/author_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="30.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="64.0dip"
+                android:background="@drawable/community_user_name_bg"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="小明"
+                android:textColor="@color/black_dark_tv"
+                android:textSize="14.0sp" />
+
+            <TextView
+                android:id="@+id/article_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_space_m"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black_label_tv"
+                android:textSize="@dimen/common_tv_size_l" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/author_icon_iv"
+                android:layout_width="@dimen/height_common_m_l"
+                android:layout_height="@dimen/height_common_m_l"
+                android:layout_marginLeft="@dimen/common_space_m"
+                android:layout_marginTop="@dimen/common_space_l"
+                android:scaleType="centerInside"
+                android:src="@drawable/community_default_user_icon" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/article_img_layout"
+            android:layout_width="match_parent"
+            android:layout_height="300dip">
+
+            <ImageView
+                android:id="@+id/article_img_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/white" />
+
+            <!--<com.opendanmaku.DanmakuView-->
+                <!--android:id="@+id/danmaku_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="200.0dip"-->
+                <!--android:paddingTop="@dimen/common_space_m"-->
+                <!--android:visibility="gone" />-->
+            <com.opendanmaku.DanmakuView
+
+                android:id="@+id/danmakuView"
+                android:layout_width="match_parent"
+                android:layout_height="200.0dip"
+                 />
+
+            <View
+                android:id="@+id/article_img_click_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.atguigu.mycyc.view.FlowLayout
+
+
+        android:id="@+id/fl_post_label"
+        style="@style/common_padding_m"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_top_layout">
+    </com.atguigu.mycyc.view.FlowLayout>
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:id="@+id/fl_post_label"-->
+        <!--style="@style/common_padding_m"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/article_top_layout" />-->
+
+    <TextView
+        android:id="@+id/article_summary_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl_post_label"
+        android:ellipsize="end"
+        android:gravity="center|left|top"
+        android:maxLines="2"
+        android:paddingBottom="@dimen/common_space_l"
+        android:paddingLeft="@dimen/common_space_m"
+        android:paddingRight="@dimen/common_space_m"
+        android:text="\#长草＃ 吧喇叭啦魔法全身变，看看吧喇叭啦魔法全身变，看看吧喇叭啦魔法全身变，看看"
+        android:textColor="@color/black_dark_tv"
+        android:textSize="14.0sp" />
+
+    <View
+        android:id="@+id/comm_line"
+        android:layout_width="match_parent"
+        android:layout_height="2.0px"
+        android:layout_below="@id/article_summary_tv"
+        android:layout_marginLeft="@dimen/common_space_m"
+        android:layout_marginRight="@dimen/common_space_m"
+        android:background="@color/black_deep_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height"
+        android:layout_below="@id/article_summary_tv"
+        android:layout_marginLeft="@dimen/common_space_m"
+        android:layout_marginRight="@dimen/common_space_m"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/like_click_layout"
+            android:layout_width="0.0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/like_icon_iv"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/community_like_icon" />
+
+            <TextView
+                android:id="@+id/like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_space_m"
+                android:gravity="center|left"
+                android:text="长草（11）"
+                android:textColor="@color/black_dark_tv"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="3.0dip"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/common_space_m"
+            android:layout_marginTop="@dimen/common_space_m"
+            android:background="@drawable/community_mid_line" />
+
+        <LinearLayout
+            android:id="@+id/comment_click_layout"
+            android:layout_width="0.0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/comment_icon_iv"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/community_comment_icon" />
+
+            <TextView
+                android:id="@+id/comment_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_space_m"
+                android:gravity="center|left"
+                android:text="评论（11）"
+                android:textColor="@color/black_dark_tv"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<ImageView-->
+        <!--android:id="@+id/author_icon_iv"-->
+        <!--android:layout_width="@dimen/height_common_m_l"-->
+        <!--android:layout_height="@dimen/height_common_m_l"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_marginLeft="@dimen/common_space_m"-->
+        <!--android:layout_marginTop="@dimen/common_space_l"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/community_default_user_icon" />-->
+</RelativeLayout>

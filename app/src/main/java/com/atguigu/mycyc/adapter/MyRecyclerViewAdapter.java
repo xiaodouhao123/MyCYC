@@ -1,20 +1,25 @@
 package com.atguigu.mycyc.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.mycyc.R;
+import com.atguigu.mycyc.activity.NewActivity;
 import com.atguigu.mycyc.bean.HomeBean;
+import com.atguigu.mycyc.utils.Constant;
 import com.atguigu.mycyc.utils.UIUtils;
 import com.atguigu.mycyc.view.NoScrollGridView;
 import com.atguigu.mycyc.view.ZoomOutPageTransformer;
@@ -129,7 +134,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             channel_info = resultBeant.getChannel_info();
             //显示gridview
             ((ViewHolder1) holder).gv_home_channel_info.setAdapter(new MyGridViewAdapter());
-
+           //设置频道的点击跳转
+            ((ViewHolder1) holder).gv_home_channel_info.setOnItemClickListener(new ChannelItmeClicklitener());
         } else if (position == 2) {
             //获取集合数据
 
@@ -173,7 +179,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+    class ChannelItmeClicklitener implements AdapterView.OnItemClickListener {
 
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.e("TAG", "chaneel=="+position);
+            //跳转到NewActivity界面
+            Intent intent=new Intent(mContext, NewActivity.class);
+            intent.putExtra(Constant.NEW_GOODS_POSITION,position);
+            mContext.startActivity(intent);
+        }
+    }
 
     @Override
     public int getItemCount() {

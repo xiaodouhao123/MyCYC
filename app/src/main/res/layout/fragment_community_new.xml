@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:text="最新界面"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray_light_bg">
 
-</LinearLayout>
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/article_list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </com.cjj.MaterialRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/error_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/hint_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/comm_no_data_bg" />
+
+        <Button
+            android:id="@+id/refresh_load_btn"
+            android:layout_width="100.0dip"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="@dimen/common_space_xl"
+            android:background="@drawable/comm_no_data_refresh_bg"
+            android:text="@string/refresh_load"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_tv_size_l" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="@style/mProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+</FrameLayout>

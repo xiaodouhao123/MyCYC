@@ -1,11 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-<TextView
-    android:text="我是购物车界面"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray_light_bg">
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_cart_head"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/new_top_bar_height"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header_bg">
+
+        <ImageView
+            android:id="@+id/btn_cart_back"
+            android:layout_width="@dimen/back_btn_width"
+            android:layout_height="@dimen/back_btn_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:scaleType="center"
+            android:src="@drawable/top_bar_left_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:text="购物车"
+            android:textColor="@color/tv_color_black"
+            android:textSize="18.0sp" />
+
+        <Button
+            android:id="@+id/btn_cart_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_space_l"
+            android:background="@null"
+            android:gravity="center|right"
+            android:text="@string/cart_edit"
+            android:textColor="@color/tv_color_black"
+            android:textSize="14.0sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/height_common_x_l"
+        android:background="@color/gray_light_bg">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.cjj.MaterialRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/height_common_x_l">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_cart"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </com.cjj.MaterialRefreshLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/height_common_x_l"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:id="@+id/ll_menu_bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/height_common_x_l"
+                    android:background="@color/white"
+                    android:visibility="visible">
+
+                    <CheckBox
+                        android:id="@+id/cb_cart_select"
+                        android:layout_width="42.0dip"
+                        android:layout_height="42.0dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/cart_select"
+                        android:button="@null"
+                        android:checked="false" />
+
+                    <TextView
+                        android:id="@+id/tv_select_all"
+                        style="@style/tv_style_common"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_space_l"
+                        android:layout_toRightOf="@+id/cb_cart_select"
+                        android:gravity="center_vertical"
+                        android:text="@string/select_all" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6.0dip"
+                        android:layout_toRightOf="@+id/tv_select_all"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
+                            android:text="合计:"
+                            android:textColor="@color/tv_color_black"
+                            android:textSize="14.0sp" />
+
+                        <TextView
+                            android:id="@+id/tv_cart_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="2.0"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/tv_color_red"
+                            android:textSize="14.0sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/common_space"
+                        android:layout_toRightOf="@+id/tv_select_all"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_origin_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/tv_color_black"
+                            android:textSize="9.0sp" />
+
+                        <TextView
+                            android:id="@+id/tv_sub_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="2.0dip"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/tv_color_black"
+                            android:textSize="9.0sp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_cart_pay"
+                        android:layout_width="112.0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/red_theme"
+                        android:text="去结算(2)"
+                        android:textColor="@color/white"
+                        android:textSize="16.0sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_edit_bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/height_common_l"
+                    android:layout_marginTop="@dimen/common_space"
+                    android:background="@color/white"
+                    android:paddingRight="@dimen/common_space_l"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:id="@+id/cb_collect_select"
+                        android:layout_width="42.0dip"
+                        android:layout_height="42.0dip"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/cart_select"
+                        android:button="@null"
+                        android:checked="false" />
+
+                    <TextView
+                        android:id="@+id/tv_collect_all"
+                        style="@style/tv_style_common"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_space_l"
+                        android:layout_toRightOf="@id/cb_collect_select"
+                        android:gravity="center_vertical"
+                        android:text="@string/select_all" />
+
+                    <TextView
+                        android:id="@+id/tv_delete"
+                        style="@style/tv_style_common"
+                        android:layout_width="@dimen/img_size_s"
+                        android:layout_height="@dimen/height_common_s"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_space_l"
+                        android:layout_toLeftOf="@id/tv_collect_all"
+                        android:background="@drawable/shape_s1_c6_black_bg"
+                        android:gravity="center"
+                        android:text="@string/delete" />
+
+                    <TextView
+                        android:id="@+id/tv_collect"
+                        style="@style/tv_style_uncommon_red"
+                        android:layout_width="@dimen/img_size_s"
+                        android:layout_height="@dimen/height_common_s"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/shape_s1_c6_red_bg"
+                        android:gravity="center"
+                        android:text="@string/collect" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/no_resouce_iv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/list_is_empty_img" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_space"
+                android:src="@drawable/list_is_empty_tv_cart" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/mProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+    </FrameLayout>
+</RelativeLayout>

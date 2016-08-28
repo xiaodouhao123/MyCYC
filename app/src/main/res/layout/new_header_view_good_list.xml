@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/height_common_m_l"
+    android:background="@color/white"
+    android:gravity="center"
+    android:weightSum="3.0">
+
+    <LinearLayout
+        android:id="@+id/lay_btn_composite"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_btn_composite"
+            style="@style/tv_style_black_dp_m"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/good_list_tab_composite" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_btn_price"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_btn_price"
+            style="@style/tv_style_black_dp_m"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/good_list_tab_price_sort" />
+
+        <ImageView
+            android:id="@+id/iv_btn_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_space"
+            android:scaleType="center"
+            android:src="@drawable/new_price_sort_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_btn_filter"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_btn_filter"
+            style="@style/tv_style_black_dp_m"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/good_list_tab_screening" />
+    </LinearLayout>
+</LinearLayout>

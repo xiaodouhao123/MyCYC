@@ -7,4 +7,6 @@ package com.atguigu.mycyc.utils;
  */
 public class Constant {
     public static final String IS_START_MAIN ="isStartMain" ;
+    //频道被点击的位置
+    public static final String NEW_GOODS_POSITION = "new_goods_position";
 }

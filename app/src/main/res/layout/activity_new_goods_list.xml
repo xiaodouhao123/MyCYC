@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/gray_light">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/good_recyclerView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_light_bg" />
+
+        <include
+            layout="@layout/new_error_page_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/scroll_herder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/top_header"
+            layout="@layout/common_seek"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/new_top_bar_height" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/gray_light_bg" />
+
+        <include
+            android:id="@+id/header_view"
+            layout="@layout/new_header_view_good_list"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_common_m_l" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_top_fire"
+        android:layout_width="40.0dip"
+        android:layout_height="40.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/top_btn" />
+</RelativeLayout>
