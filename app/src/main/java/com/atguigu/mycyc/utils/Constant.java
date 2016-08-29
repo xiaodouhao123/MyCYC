@@ -11,4 +11,5 @@ public class Constant {
     public static final String NEW_GOODS_POSITION = "new_goods_position";
     //商品详情地址
     public static final String GOODS_DETAIL ="goods_detail";
+    public static final String NEW_GOODS_MORE ="more" ;
 }

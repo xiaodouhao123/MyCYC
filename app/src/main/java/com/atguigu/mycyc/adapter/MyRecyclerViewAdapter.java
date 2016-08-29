@@ -17,8 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.mycyc.R;
+import com.atguigu.mycyc.activity.HomeWebiewActivity;
+import com.atguigu.mycyc.activity.MoreActivity;
 import com.atguigu.mycyc.activity.NewActivity;
 import com.atguigu.mycyc.bean.HomeBean;
+import com.atguigu.mycyc.utils.AppNetConfig;
 import com.atguigu.mycyc.utils.Constant;
 import com.atguigu.mycyc.utils.UIUtils;
 import com.atguigu.mycyc.view.NoScrollGridView;
@@ -183,11 +186,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.e("TAG", "chaneel=="+position);
-            //跳转到NewActivity界面
-            Intent intent=new Intent(mContext, NewActivity.class);
-            intent.putExtra(Constant.NEW_GOODS_POSITION,position);
-            mContext.startActivity(intent);
+            if(position==channel_info.size()-1) {
+               //跳转到更多界面
+                Intent intent=new Intent(mContext, MoreActivity.class);
+                intent.putExtra(Constant.NEW_GOODS_MORE, AppNetConfig.HOME_MORE_URL);
+                mContext.startActivity(intent);
+            }else {
+                Log.e("TAG", "chaneel=="+position);
+                //跳转到NewActivity界面
+                Intent intent=new Intent(mContext, NewActivity.class);
+                intent.putExtra(Constant.NEW_GOODS_POSITION,position);
+                mContext.startActivity(intent);
+            }
+
         }
     }
 
@@ -400,7 +411,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
 
             ImageView imageView = new ImageView(mContext);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -412,6 +423,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 //                             .crossFade()
                     .into(imageView);
             container.addView(imageView);
+            //设置图片的点击监听
+            //TODO:根据不同的position传入不同的Url
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, HomeWebiewActivity.class);
+                    intent.putExtra("url", act_info.get(position).getUrl());
+                    mContext.startActivity(intent);
+                }
+            });
 
             return imageView;
 

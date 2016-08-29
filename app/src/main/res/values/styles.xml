@@ -80,4 +80,10 @@
         <item name="android:paddingLeft">@dimen/common_space_l</item>
         <item name="android:paddingRight">@dimen/common_space_l</item>
     </style>
+    <style name="common_padding_l">
+        <item name="android:paddingLeft">@dimen/common_space_l</item>
+        <item name="android:paddingTop">@dimen/common_space_l</item>
+        <item name="android:paddingRight">@dimen/common_space_l</item>
+        <item name="android:paddingBottom">@dimen/common_space_l</item>
+    </style>
 </resources>

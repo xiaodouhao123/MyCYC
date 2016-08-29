@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@color/gray_shallow_light_bg">
 
-    <ScrollView
+    <com.atguigu.mycyc.view.MyScrollView
         android:id="@+id/sc_new_user_scroll"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -541,7 +541,7 @@
                     android:textSize="@dimen/common_tv_size_l" />
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+    </com.atguigu.mycyc.view.MyScrollView>
 
     <include
         layout="@layout/new_user_center_bar"

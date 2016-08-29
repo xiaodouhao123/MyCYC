@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_shallow_light_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/icd_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/new_top_bar_height"
+        android:background="@drawable/header_bg">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/back_btn_width"
+            android:layout_height="@dimen/back_btn_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:scaleType="center"
+            android:src="@drawable/top_bar_left_back" />
+
+        <FrameLayout
+            android:id="@+id/top_right"
+            android:layout_width="@dimen/back_btn_width"
+            android:layout_height="@dimen/back_btn_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tv_right_btn"
+                style="@style/tv_style_black_dp_m"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="@dimen/common_space_l"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="save"
+                android:scaleType="center"
+                android:src="@drawable/icon_more"
+                android:visibility="visible" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/top_right"
+            android:layout_toRightOf="@id/btn_back"
+            android:gravity="center"
+            android:paddingLeft="48.0dip"
+            android:paddingRight="48.0dip"
+            android:singleLine="true"
+            android:textColor="@color/title_color"
+            android:textSize="18.0sp" />
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/back_btn_width"
+            android:layout_height="@dimen/back_btn_height"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btn_back"
+            android:paddingRight="16.0dip"
+            android:scaleType="center"
+            android:src="@drawable/icon_close" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.cjj.MaterialRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/goods_webview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--</LinearLayout>-->
+        </com.cjj.MaterialRefreshLayout>
+    </LinearLayout>
+</LinearLayout>

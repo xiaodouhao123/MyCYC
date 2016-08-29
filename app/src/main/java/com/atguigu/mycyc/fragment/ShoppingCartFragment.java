@@ -2,6 +2,7 @@ package com.atguigu.mycyc.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -117,12 +118,38 @@ public class ShoppingCartFragment extends BaseFragment {
         showData();
     }
 
-    private void showData() {
+    public void showData() {
         datas=cartProvider.getAll();
         adapter=new CartShoppingAdapter(mContext,datas,cbCartSelect,tvCartTotal);
         rcvCart.setAdapter(adapter);
         rcvCart.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
     }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            showData();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.e("TAG", "执行了onstart");
+    }
+    public void onResume() {
+        super.onResume();
+        Log.e("TAG", "onResume()");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.e("TAG", "onStop()");
+    }
+
+
 
     private void hideDeleteControl() {
         //显示主控制栏

@@ -12,6 +12,7 @@ import com.atguigu.mycyc.R;
 import com.atguigu.mycyc.bean.CartProvider;
 import com.atguigu.mycyc.bean.ShoppingCart;
 import com.atguigu.mycyc.view.NumberAddSubView;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -147,6 +148,30 @@ public class CartShoppingAdapter extends RecyclerView.Adapter<CartShoppingAdapte
 
     @Override
     public void onBindViewHolder(CartShoppingAdapter.MyHolder holder, int position) {
+        //获取数据
+        final ShoppingCart shoppingCart = datas.get(position);
+        //显示图片
+        Glide.with(mContext).load(shoppingCart.getFigure()).into(holder.iv_icon);
+        holder.checkbox.setChecked(shoppingCart.isChecked());
+        holder.tv_name.setText(shoppingCart.getName());
+        holder.tv_price.setText("￥ " + shoppingCart.getCover_price());
+        holder.numberAddSubView.setValue(shoppingCart.getCount());
+        holder.numberAddSubView.setOnButtonClickListenter(new NumberAddSubView.OnButtonClickListenter() {
+            @Override
+            public void onButtonAddClick(View view, int value) {
+                shoppingCart.setCount(value);
+                cartProvider.upsdate(shoppingCart);
+                showTotalPrice();
+
+            }
+
+            @Override
+            public void onButtonSubClick(View view, int value) {
+                shoppingCart.setCount(value);
+                cartProvider.upsdate(shoppingCart);
+                showTotalPrice();
+            }
+        });
 
     }
 

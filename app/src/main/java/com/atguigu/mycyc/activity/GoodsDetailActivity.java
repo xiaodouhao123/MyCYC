@@ -160,6 +160,7 @@ public class GoodsDetailActivity extends Activity {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
                 ImageView iv=new ImageView(GoodsDetailActivity.this);
+                iv.setScaleType(ImageView.ScaleType.FIT_XY);
                 Glide.with(GoodsDetailActivity.this).load(product_info.getFigure()).into(iv);
                 container.addView(iv);
                 return iv;

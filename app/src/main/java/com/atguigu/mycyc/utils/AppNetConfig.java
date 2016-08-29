@@ -28,4 +28,6 @@ public class AppNetConfig {
     public static final String COMMUNITY_HOT = "http://mi2.cycang.com/index.php?c=ugc&a=getPostList&sign=09f8e9a14bae124a92f023d2b9d600c8&is_new=0&start=0&nums=5&is_hot=1&public_key=c16abd9f3dd734a628e17cd6fef39e93&cyc_tk=&ver=5.0";
     public static final String HOME_YXC="http://mi2.cycang.com/index.php?c=shop&a=page&supplier_code=0&sort=sort_order&keyword=&supplier_type=0&brand_id=0&ver=5.0&sale_type=1&channel_id=4&sign=fbf5b52fa4c8c5b680d9794f66b207dd&is_new=0&price=1%7C99999&start=0&nums=20&is_hot=0&public_key=c16abd9f3dd734a628e17cd6fef39e93&cyc_tk=&catalog_id=0";
     public static final String GOOD_DETAIL="http://mi2.cycang.com/index.php?c=shop&a=getProduct&sign=a7245f7766cd5c7779cc5b1bb20f5e86&public_key=c16abd9f3dd734a628e17cd6fef39e93&cyc_tk=&ver=5.0&is_get_tag=1&product_id=5181&is_get_gallery=1";
+    public static final String HOME_MORE_URL = "http://mi2.cycang.com/index.php?c=shop&a=getAllChannelList&sign=6efc40a6dabe3f184000180d70c4712b&public_key=c16abd9f3dd734a628e17cd6fef39e93&cyc_tk=&start=0&nums=100";
+
 }

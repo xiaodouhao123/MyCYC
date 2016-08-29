@@ -70,7 +70,6 @@ public class MainActivity extends FragmentActivity {
         initListener();
 
 
-
     }
 
     private void initAnimation() {
@@ -121,6 +120,7 @@ public class MainActivity extends FragmentActivity {
         rgMain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                
                 switch (checkedId) {
                     case R.id.rb_home_main://主页面
                         position = 0;
@@ -134,6 +134,8 @@ public class MainActivity extends FragmentActivity {
                         break;
                     case R.id.rb_shoppingcart_main://购物车
                         position = 3;
+//                        ShoppingCartFragment tag3 = (ShoppingCartFragment)getSupportFragmentManager().findFragmentByTag("tag3");
+//                        tag3.showData();
                         break;
                     case R.id.rb_selfcenter_main://个人中心
                         position = 4;
@@ -142,7 +144,7 @@ public class MainActivity extends FragmentActivity {
                 //根据位置得到对应的Fragment
                 BaseFragment to = getFragment();
                 //替换
-                switchFrament(mContent, to);
+                switchFrament(mContent, to, position);
                 //初始化动画,根据吱吱被选中的转态来设置动画
                 initAnimation();
             }
@@ -155,7 +157,7 @@ public class MainActivity extends FragmentActivity {
      * @param from 刚显示的Fragment,马上就要被隐藏了
      * @param to   马上要切换到的Fragment，一会要显示
      */
-    private void switchFrament(Fragment from, BaseFragment to) {
+    private void switchFrament(Fragment from, BaseFragment to, int position) {
         if (from != to) {
             mContent = to;
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -169,17 +171,23 @@ public class MainActivity extends FragmentActivity {
                 }
                 //添加to
                 if (to != null) {
-                    ft.add(R.id.fl_main_replaced, to).commit();
+
+                    ft.add(R.id.fl_main_replaced, to,"tag"+position).commit();
                 }
             } else {
                 //to已经被添加
                 // from隐藏
                 if (from != null) {
-                    ft.hide(from);
+                    if(position==3) {
+                        ft.remove(from);
+                    }else {
+
+                        ft.hide(from);
+                    }
                 }
                 //显示to
                 if (to != null) {
-                    ft.show(to).commit();
+                        ft.show(to).commit();
                 }
             }
         }
