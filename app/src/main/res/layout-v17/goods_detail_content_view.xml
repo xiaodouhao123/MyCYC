@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/refreshLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:id="@id/scroll_good_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@id/vp_good_imgs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@id/tv_goods_nums_show"
+                    style="@style/tv_style_uncommon_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/common_space_l"
+                    android:layout_marginRight="@dimen/common_space_l"
+                    android:background="@drawable/goods_carousel_icon"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@id/tv_good_name"
+                style="@style/tv_style_common"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_space_xl"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l" />
+
+            <TextView
+                android:id="@id/tv_good_memo"
+                style="@style/tv_style_uncommon"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_space_m"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_space_l"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l">
+
+                <TextView
+                    android:id="@id/tv_good_price"
+                    style="@style/tv_style_uncommon_red_xl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@id/tv_pre_total"
+                    style="@style/tv_style_uncommon_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_space"
+                    android:layout_toRightOf="@id/tv_good_price"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@id/lay_shangou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/width_common_s"
+                        android:layout_height="@dimen/height_common_s_s"
+                        android:scaleType="center"
+                        android:src="@drawable/flash_bug" />
+
+                    <TextView
+                        android:id="@id/tv_good_expire_time"
+                        style="@style/tv_style_uncommon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_space_m"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@id/tv_origin_price"
+                style="@style/tv_style_uncommon"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l"
+                android:paddingTop="@dimen/common_space_m"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/height_common_m_l"
+                android:layout_marginTop="@dimen/common_space_l"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l">
+
+                <TextView
+                    android:id="@id/tv_label_server"
+                    style="@style/tv_style_common"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:id="@id/label_line_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/line_color"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <View
+                android:id="@id/v_pre_good"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_space_m"
+                android:background="@color/gray_light"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@id/ll_pre_order"
+                style="@style/common_padding_left_right"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_common_xxxl"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@id/tv_pre_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/icon_yellow"
+                    android:textSize="@dimen/common_tv_size_m" />
+
+                <TextView
+                    android:id="@id/tv_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_space_ms"
+                    android:textColor="@color/icon_yellow"
+                    android:textSize="@dimen/common_tv_size_m" />
+
+                <TextView
+                    android:id="@id/tv_send_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_space_ms"
+                    android:textColor="@color/icon_yellow"
+                    android:textSize="@dimen/common_tv_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_space_m"
+                android:background="@color/gray_light"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@id/lay_product_style"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l">
+
+                <TextView
+                    style="@style/tv_style_common"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/height_common_m_l"
+                    android:gravity="center_vertical"
+                    android:text="@string/product_style" />
+
+                <GridView
+                    android:id="@id/gridView_style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:horizontalSpacing="@dimen/common_space_l"
+                    android:numColumns="3"
+                    android:paddingBottom="@dimen/common_space_l"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="@dimen/common_space_l" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:background="@color/line_color"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <Button
+                android:id="@id/btn_choose_type"
+                style="@style/tv_style_common"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/height_common_l"
+                android:background="@color/white"
+                android:drawableRight="@drawable/icon_arrows_left"
+                android:focusable="false"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l"
+                android:text="@string/select_type" />
+
+            <View
+                android:id="@id/label_padding_top_line_view"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_space_m"
+                android:background="@color/gray_light"
+                android:visibility="visible" />
+
+            <HorizontalScrollView
+                android:id="@id/label_horizontal_scrollView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@id/lay_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_common_l"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_space_m"
+                android:background="@color/gray_light"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@id/tv_label_hint"
+                style="@style/tv_style_common"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_space_m"
+                android:paddingLeft="@dimen/common_space_l"
+                android:paddingRight="@dimen/common_space_l"
+                android:paddingTop="@dimen/common_space_m"
+                android:text="@string/new_tv_hint" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_space_m"
+                android:background="@color/gray_light"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/height_common_m_l">
+
+                <TextView
+                    android:id="@id/tv_footer"
+                    style="@style/tv_style_common"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="@string/hint_graphic_details" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2.0px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/red_theme"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@id/footer_fragment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200.0dip"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</com.cjj.MaterialRefreshLayout>

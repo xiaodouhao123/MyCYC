@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+
+        android:id="@+id/good_detail_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/top_bar"
+            layout="@layout/new_common_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/new_top_bar_height"
+            android:layout_alignParentTop="true"
+             />
+
+        <include
+           android:layout_alignParentBottom="true"
+            layout="@layout/goods_detail_bottom_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/new_top_bar_height"
+           />
+
+        <include
+            layout="@layout/goods_detail_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/lay_bottom"
+            android:layout_below="@id/top_bar" />
+
+        <include
+            layout="@layout/new_error_page_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/top_bar" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/cart_parent_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/transparent"
+        android:visibility="gone" />
+</FrameLayout>

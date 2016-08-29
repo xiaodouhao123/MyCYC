@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_new_common_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/new_top_bar_height"
+    android:background="@drawable/header_bg">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/back_btn_width"
+        android:layout_height="@dimen/back_btn_height"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:onClick="back"
+        android:scaleType="center"
+        android:src="@drawable/top_bar_left_back" />
+
+    <FrameLayout
+        android:id="@+id/top_right"
+        android:layout_width="@dimen/back_btn_width"
+        android:layout_height="@dimen/back_btn_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/tv_right_btn"
+            style="@style/tv_style_black_dp_m"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center|right"
+            android:paddingRight="@dimen/common_space_l"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/btn_ok"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:onClick="save"
+            android:scaleType="center"
+            android:src="@drawable/new_btn_add"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/top_right"
+        android:layout_toRightOf="@id/btn_back"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/title_color"
+        android:textSize="18.0sp" />
+</RelativeLayout>

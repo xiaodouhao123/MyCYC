@@ -1,11 +1,13 @@
 package com.atguigu.mycyc.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -79,7 +81,9 @@ public class NewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_goods_list);
         ButterKnife.bind(this);
+        //设置recyview的点击监听
         initData();
+
     }
 
     private void initData() {
@@ -132,8 +136,27 @@ public class NewActivity extends Activity {
             //显示适配器
             adapter =new NewActivityAdapter(this,page_data);
             goodRecyclerView.setAdapter(adapter);
-            goodRecyclerView.setLayoutManager(new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false));
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    if(position==0) {
+                       return 2;
+                    }
+                    return 1;
+                }
+            });
+            goodRecyclerView.setLayoutManager(gridLayoutManager);
             goodRecyclerView.setItemViewCacheSize(5);
+            //设置点击监听
+            adapter.setOnItemOnclickListener(new NewActivityAdapter.OnItemOnclickListener() {
+                @Override
+                public void onItemOnclick(View view, int position) {
+                    Intent intent=new Intent(NewActivity.this,GoodsDetailActivity.class);
+                    intent.putExtra(Constant.GOODS_DETAIL,AppNetConfig.GOOD_DETAIL);
+                    startActivity(intent);
+                }
+            });
 
         } else {
             Toast.makeText(NewActivity.this, "请求数据为空", Toast.LENGTH_SHORT).show();

@@ -20,8 +20,13 @@ import java.util.List;
  * 作用:
  */
 public class NewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final Context mContext;
-    private final List<HomeYxc.ResultBean.PageDataBean> page_data;
+    private Context mContext;
+    private List<HomeYxc.ResultBean.PageDataBean> page_data;
+    private OnItemOnclickListener onItemOnclickListener;
+
+    public void setOnItemOnclickListener(OnItemOnclickListener onItemOnclickListener) {
+        this.onItemOnclickListener = onItemOnclickListener;
+    }
 
     public NewActivityAdapter(Context context, List<HomeYxc.ResultBean.PageDataBean> page_data) {
         mContext = context;
@@ -30,18 +35,18 @@ public class NewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0) {
-           return 0;
+        if (position == 0) {
+            return 0;
         }
         return 1;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType==0) {
+        if (viewType == 0) {
             View itemView = LayoutInflater.from(mContext).inflate(R.layout.new_header_view_empty, parent, false);
             return new MyViewHoler0(itemView);
-        }else {
+        } else {
 
             View itemView = LayoutInflater.from(mContext).inflate(R.layout.adapter_item_good_view, parent, false);
             return new MyViewHoler1(itemView);
@@ -49,18 +54,27 @@ public class NewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(position!=0) {
-           //设置数据
-            setData((MyViewHoler1)holder, position);
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        if (position != 0) {
+            //设置数据
+            setData((MyViewHoler1) holder, position);
+
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onItemOnclickListener!=null) {
+                    onItemOnclickListener.onItemOnclick(holder.itemView,position);
+                }
+            }
+        });
     }
 
 
 
     private void setData(MyViewHoler1 holder, int position) {
         //获取当前数据
-        HomeYxc.ResultBean.PageDataBean pageDataBean = page_data.get(position-1);
+        HomeYxc.ResultBean.PageDataBean pageDataBean = page_data.get(position - 1);
         //设置图片
         Glide
                 .with(mContext)
@@ -79,7 +93,7 @@ public class NewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return page_data == null ? 0 : page_data.size()+1;
+        return page_data == null ? 0 : page_data.size() + 1;
     }
 
     public class MyViewHoler1 extends RecyclerView.ViewHolder {
@@ -87,19 +101,29 @@ public class NewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView tv1;
         TextView tv2;
         TextView tv_origin_price;
-        public MyViewHoler1(View itemView) {
+
+        public MyViewHoler1(final View itemView) {
             super(itemView);
             iv = (ImageView) itemView.findViewById(R.id.card_img);
             tv1 = (TextView) itemView.findViewById(R.id.card_tv1);
             tv2 = (TextView) itemView.findViewById(R.id.card_tv2);
             tv_origin_price = (TextView) itemView.findViewById(R.id.tv_origin_price);
+
+
         }
-    }
+
+
+        }
     public class MyViewHoler0 extends RecyclerView.ViewHolder {
 
         public MyViewHoler0(View itemView) {
             super(itemView);
 
         }
+
+    }
+    public interface OnItemOnclickListener {
+        void onItemOnclick(View view, int position);
     }
 }
+

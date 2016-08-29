@@ -22,7 +22,8 @@
         <activity
             android:name=".activity.WelcomeActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".activity.NewActivity"></activity>
+        <activity android:name=".activity.NewActivity" />
+        <activity android:name=".activity.GoodsDetailActivity"></activity>
     </application>
 
 </manifest>

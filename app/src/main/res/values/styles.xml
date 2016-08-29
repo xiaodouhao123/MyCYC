@@ -64,4 +64,20 @@
         <item name="android:textSize">@dimen/home_tv_m_size</item>
         <item name="android:textColor">@color/tv_color_black</item>
     </style>
+    <style name="tv_style_uncommon_white">
+        <item name="android:textSize">@dimen/common_tv_size_l</item>
+        <item name="android:textColor">@color/tv_color_white</item>
+    </style>
+    <style name="tv_style_uncommon_red_xl">
+        <item name="android:textSize">@dimen/common_tv_size_xl</item>
+        <item name="android:textColor">@color/tv_color_red</item>
+    </style>
+    <style name="tv_style_uncommon_black">
+        <item name="android:textSize">@dimen/common_tv_size_xl</item>
+        <item name="android:textColor">@color/tv_color_black</item>
+    </style>
+    <style name="common_padding_left_right">
+        <item name="android:paddingLeft">@dimen/common_space_l</item>
+        <item name="android:paddingRight">@dimen/common_space_l</item>
+    </style>
 </resources>
