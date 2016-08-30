@@ -1,17 +1,15 @@
 package com.atguigu.mycyc.fragment;
 
-import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.atguigu.mycyc.R;
+import com.atguigu.mycyc.adapter.ClassflyListViewAdapter;
 import com.atguigu.mycyc.adapter.ClassflyRecyleViewAdapter;
 import com.atguigu.mycyc.base.BaseFragment;
 import com.atguigu.mycyc.bean.ClassfilyBean;
@@ -19,10 +17,8 @@ import com.atguigu.mycyc.utils.AppNetConfig;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.Bind;
 import okhttp3.Call;
 
@@ -36,7 +32,7 @@ public class ClassfliyPartitionFragment extends BaseFragment {
     ListView llClassfily;
     @Bind(R.id.rlv_classfiy_partion)
     RecyclerView rlvClassfiyPartion;
-    private ArrayAdapter<String> listviewAdapter;
+    private ClassflyListViewAdapter listviewAdapter;
     //listview的数据
     private List<String> list;
     // private ClassflyListViewAdapter listviewAdapter;
@@ -60,14 +56,17 @@ public class ClassfliyPartitionFragment extends BaseFragment {
             ClassfilyBean classfilyBean = new Gson().fromJson(content, ClassfilyBean.class);
             List<ClassfilyBean.ResultBean> result = classfilyBean.getResult();
             //设置listview
-            //listviewAdapter = new ClassflyListViewAdapter(mContext, result);
             //准备集合数据
             list = new ArrayList<>();
             for (int i = 0; i < result.size(); i++) {
                 list.add(result.get(i).getName());
             }
-            listviewAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, list);
+            listviewAdapter = new ClassflyListViewAdapter(mContext,list);
+            //去掉滚动条
+            llClassfily.setVerticalScrollBarEnabled(false);
+            //listviewAdapter = new ArrayAdapter<String>(mContext,R.layout.text_view, list);
             llClassfily.setAdapter(listviewAdapter);
+            //llClassfily.setSelector(R.drawable.selector_list_item);
             //设置recyleview的显示
             resultBean = result.get(0);
             recyleviewAdapter = new ClassflyRecyleViewAdapter(mContext, resultBean);
@@ -88,8 +87,6 @@ public class ClassfliyPartitionFragment extends BaseFragment {
             rlvClassfiyPartion.setLayoutManager(gridLayoutManager);
             //初始化监听
             initListenr();
-
-
         } else {
             Toast.makeText(this.getActivity(), "没有数据", Toast.LENGTH_SHORT).show();
             return;
@@ -102,7 +99,7 @@ public class ClassfliyPartitionFragment extends BaseFragment {
         llClassfily.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.RED);
+                listviewAdapter.刷新(position);
                 Toast.makeText(mContext, "name=" + list.get(position), Toast.LENGTH_SHORT).show();
                 //根据点击的listview的位置来动态显示recyliview
                 //得到需要显示点击的位置
@@ -133,7 +130,6 @@ public class ClassfliyPartitionFragment extends BaseFragment {
                     @Override
                     public void onResponse(String response, int id) {//请求成功
                         //展示RecyleView的数据
-
                         showRecyleViewData(response);
                     }
                 });

@@ -4,8 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-import com.atguigu.mycyc.bean.ClassfilyBean;
+import com.atguigu.mycyc.R;
 
 import java.util.List;
 
@@ -16,22 +17,37 @@ import java.util.List;
  */
 public class ClassflyListViewAdapter extends BaseAdapter {
 
-    private final Context mContext;
-    private final List<ClassfilyBean.ResultBean> resultBeans;
+    private Context mContext;
+    private List<String> list;
 
-    public ClassflyListViewAdapter(Context mContext, List<ClassfilyBean.ResultBean> result) {
+
+    int mSelect = 0;   //选中项
+
+    public ClassflyListViewAdapter(Context mContext, List<String> list) {
         this.mContext = mContext;
-        resultBeans = result;
+        this.list = list;
+    }
+
+
+    public void 刷新(int position) {
+        changeSelected(position);
+    }
+
+    public void changeSelected(int positon) { //刷新方法
+        if (positon != mSelect) {
+            mSelect = positon;
+            notifyDataSetChanged();
+        }
     }
 
     @Override
     public int getCount() {
-        return resultBeans==null?0:resultBeans.size();
+        return list.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return resultBeans.size();
+        return list.get(position);
     }
 
     @Override
@@ -41,7 +57,17 @@ public class ClassflyListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
 
+            convertView = View.inflate(mContext, R.layout.text_view, null);
+            TextView tv= (TextView) convertView.findViewById(R.id.tv);
+            tv.setText(list.get(position));
+        }
+        if (mSelect == position) {
+            convertView.setBackgroundResource(R.color.gray_light);  //选中项背景
+        } else {
+            convertView.setBackgroundResource(R.color.gray_dark_bg);  //其他项背景
+        }
         return convertView;
     }
 }
