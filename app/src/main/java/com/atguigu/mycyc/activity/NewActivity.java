@@ -1,13 +1,14 @@
 package com.atguigu.mycyc.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,6 +20,9 @@ import android.widget.Toast;
 import com.atguigu.mycyc.R;
 import com.atguigu.mycyc.adapter.NewActivityAdapter;
 import com.atguigu.mycyc.bean.HomeYxc;
+import com.atguigu.mycyc.fragment.FillterFragment;
+import com.atguigu.mycyc.fragment.FillterPriceFragment;
+import com.atguigu.mycyc.fragment.ThemeFragment;
 import com.atguigu.mycyc.utils.AppNetConfig;
 import com.atguigu.mycyc.utils.CacheUtils;
 import com.atguigu.mycyc.utils.Constant;
@@ -26,15 +30,20 @@ import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import net.simonvt.menudrawer.MenuDrawer;
+import net.simonvt.menudrawer.Position;
+
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 
-public class NewActivity extends Activity {
+public class NewActivity extends FragmentActivity {
 
     public static final String NEW_ACTIVITY_CAECH = "new_activity_caech";
+    public static final String HOME = "home";
     @Bind(R.id.good_recyclerView)
     RecyclerView goodRecyclerView;
     @Bind(R.id.network_iv_describe)
@@ -73,21 +82,29 @@ public class NewActivity extends Activity {
     LinearLayout scrollHerder;
     @Bind(R.id.btn_top_fire)
     ImageButton btnTopFire;
+    @Bind(R.id.fl_drawer_right)
+    FrameLayout flDrawerRight;
+
     private String[] urls = {AppNetConfig.HOME_YXC};
     private NewActivityAdapter adapter;
+    private MenuDrawer mDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_goods_list);
+        mDrawer = MenuDrawer.attach(this, Position.RIGHT);
+        mDrawer.setContentView(R.layout.activity_new_goods_list);
+        mDrawer.setMenuView(R.layout.draw_right);
         ButterKnife.bind(this);
         //设置recyview的点击监听
+
         initData();
 
     }
 
     private void initData() {
-
+        //默认线束筛选的主页面
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_drawer_right,new FillterFragment(), HOME).commit();
         int position = getIntent().getIntExtra(Constant.NEW_GOODS_POSITION, 0);
         //读取缓存
         String saveJson = CacheUtils.getString(NewActivity.this, NEW_ACTIVITY_CAECH);
@@ -134,14 +151,14 @@ public class NewActivity extends Activity {
         List<HomeYxc.ResultBean.PageDataBean> page_data = result.getPage_data();
         if (page_data != null && page_data.size() > 0) {//有数据
             //显示适配器
-            adapter =new NewActivityAdapter(this,page_data);
+            adapter = new NewActivityAdapter(this, page_data);
             goodRecyclerView.setAdapter(adapter);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if(position==0) {
-                       return 2;
+                    if (position == 0) {
+                        return 2;
                     }
                     return 1;
                 }
@@ -152,8 +169,8 @@ public class NewActivity extends Activity {
             adapter.setOnItemOnclickListener(new NewActivityAdapter.OnItemOnclickListener() {
                 @Override
                 public void onItemOnclick(View view, int position) {
-                    Intent intent=new Intent(NewActivity.this,GoodsDetailActivity.class);
-                    intent.putExtra(Constant.GOODS_DETAIL,AppNetConfig.GOOD_DETAIL);
+                    Intent intent = new Intent(NewActivity.this, GoodsDetailActivity.class);
+                    intent.putExtra(Constant.GOODS_DETAIL, AppNetConfig.GOOD_DETAIL);
                     startActivity(intent);
                 }
             });
@@ -162,4 +179,33 @@ public class NewActivity extends Activity {
             Toast.makeText(NewActivity.this, "请求数据为空", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    @OnClick({R.id.header_back, R.id.tv_btn_filter,R.id.header_right_btn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.header_back://返回
+                finish();
+                break;
+            case R.id.tv_btn_filter://筛选
+                mDrawer.openMenu();
+                break;
+            case R.id.header_right_btn://回到主页面
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FillterPriceFragment price = (FillterPriceFragment) getSupportFragmentManager().findFragmentByTag("price");
+        price.prePosition=0;
+        ThemeFragment theme1 = (ThemeFragment) getSupportFragmentManager().findFragmentByTag("theme");
+        theme1.prePosition=0;
+    }
 }
+

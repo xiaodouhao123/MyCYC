@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_lay"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/height_common_l"
+    android:background="@drawable/new_btn_press_color_white_and_gray"
+    android:paddingLeft="@dimen/common_space_l"
+    android:paddingRight="@dimen/common_space_l"
+   >
+
+    <TextView
+
+        android:id="@+id/tv_price_range"
+        style="@style/tv_style_common"
+        android:layout_width="60.0dip"
+        android:layout_height="36.0dip"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+         />
+    <ImageView
+        android:id="@+id/iv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/filter_type_selected"
+        android:visibility="gone" />
+</RelativeLayout>

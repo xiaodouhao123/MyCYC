@@ -84,6 +84,7 @@ public class GoodsDetailActivity extends Activity {
                 Log.e("TAG", "添加购物车成功");
             }
         });
+
     }
 
     //返回

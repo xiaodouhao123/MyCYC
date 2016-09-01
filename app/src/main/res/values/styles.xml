@@ -86,4 +86,9 @@
         <item name="android:paddingRight">@dimen/common_space_l</item>
         <item name="android:paddingBottom">@dimen/common_space_l</item>
     </style>
+    <style name="tv_style_center_black_dp_m">
+        <item name="android:textSize">@dimen/home_tv_m_size</item>
+        <item name="android:textColor">@color/tv_color_black</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

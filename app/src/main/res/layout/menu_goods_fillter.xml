@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/header_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_fillter_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_space"
+            android:src="@drawable/top_bar_left_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="筛选"
+            android:textSize="@dimen/common_tv_size_xxl" />
+
+        <TextView
+            android:id="@+id/tv_fillter_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_space"
+            android:text="确定"
+            android:textSize="@dimen/common_tv_size_xl" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/common_space"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_fillter_hot"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/new_tv_black_background"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="热卖"
+            android:textSize="@dimen/common_tv_size_xl" />
+
+        <TextView
+            android:id="@+id/tv_fillter_new"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/new_tv_black_background"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="新品"
+            android:textSize="@dimen/common_tv_size_xl" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_price"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_space"
+            android:layout_weight="1"
+            android:text="价格"
+            android:textSize="@dimen/common_tv_size_xl" />
+
+        <TextView
+            android:id="@+id/tv_fillter_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_space"
+            android:drawablePadding="@dimen/common_space"
+            android:drawableRight="@drawable/home_arrow_right"
+            android:text="不限"
+            android:textSize="@dimen/common_tv_size_xl" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/header_bg"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_theme"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_space"
+            android:layout_weight="1"
+            android:text="推荐主题"
+            android:textSize="@dimen/common_tv_size_xl" />
+
+        <TextView
+            android:id="@+id/tv_fillter_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_space"
+            android:drawablePadding="@dimen/common_space"
+            android:drawableRight="@drawable/home_arrow_right"
+            android:text="全部"
+            android:textSize="@dimen/common_tv_size_xl" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/header_bg"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_goodlist_classfily"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_fillter_classfily"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_space"
+            android:layout_weight="1"
+            android:text="类别"
+            android:textSize="@dimen/common_tv_size_xl" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_space"
+            android:drawablePadding="@dimen/common_space"
+            android:drawableRight="@drawable/home_arrow_right"
+            android:text="全部"
+            android:textSize="@dimen/common_tv_size_xl" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/header_bg"></View>
+
+
+
+        <TextView
+            android:id="@+id/tv_fillter_overwrite"
+            android:layout_margin="@dimen/common_space"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/new_tv_black_background"
+            android:gravity="center"
+            android:text="重置"
+            android:textSize="@dimen/common_tv_size_xl" />
+
+
+
+
+</LinearLayout>

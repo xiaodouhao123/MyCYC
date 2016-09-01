@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_common_l"
+    android:id="@+id/tv_child"
+    android:background="@drawable/new_btn_press_color_white_and_gray"
+    android:paddingLeft="@dimen/common_space_l"
+    android:paddingRight="@dimen/common_space_l"
+   >
+
+</TextView>

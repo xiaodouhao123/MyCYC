@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/MyCYC.iml" filepath="$PROJECT_DIR$/MyCYC.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator-library/ViewPagerIndicator-library.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator-library/ViewPagerIndicator-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/menudrawer-library/menudrawer-library.iml" filepath="$PROJECT_DIR$/menudrawer-library/menudrawer-library.iml" />
     </modules>
   </component>
 </project>

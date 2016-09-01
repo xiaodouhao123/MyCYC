@@ -32,4 +32,5 @@ dependencies {
     compile project(':ViewPagerIndicator-library')
     compile 'com.zhy:flowlayout-lib:1.0.3'
     compile 'com.linsea:opendanmaku:1.0.0@aar'
+    compile project(':menudrawer-library')
 }

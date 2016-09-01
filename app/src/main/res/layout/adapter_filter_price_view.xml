@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_lay"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/height_common_l"
+    android:background="@drawable/new_btn_press_color_white_and_gray"
+    android:paddingLeft="@dimen/common_space_l"
+    android:paddingRight="@dimen/common_space_l"
+    android:visibility="visible">
+
+    <EditText
+        android:id="@+id/id_price_start"
+        style="@style/tv_style_common"
+        android:layout_width="60.0dip"
+        android:layout_height="36.0dip"
+        android:layout_centerVertical="true"
+        android:background="@drawable/new_btn_black_background"
+        android:ems="5"
+        android:gravity="center"
+        android:hint="起始价格"
+        android:inputType="numberSigned"
+        android:text=""
+        android:textColorHint="@color/gray_dark_tv" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="8.0dip"
+        android:layout_height="1.0dip"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="4.0dip"
+        android:layout_marginRight="4.0dip"
+        android:layout_toRightOf="@id/id_price_start"
+        android:background="@color/tv_color_black" />
+
+    <EditText
+        android:id="@+id/id_price_end"
+        style="@style/tv_style_common"
+        android:layout_width="60.0dip"
+        android:layout_height="36.0dip"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/line"
+        android:background="@drawable/new_btn_black_background"
+        android:gravity="center"
+        android:hint="终止价格"
+        android:inputType="number"
+        android:text=""
+        android:textColorHint="@color/gray_dark_tv" />
+
+    <ImageView
+        android:id="@+id/id_status2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/filter_type_selected"
+        android:visibility="gone" />
+</RelativeLayout>
